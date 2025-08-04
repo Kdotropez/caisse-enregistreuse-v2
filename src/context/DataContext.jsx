@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import { sampleProducts, sampleCategories } from '../data/sampleProducts';
 
 const DataContext = createContext();
 
@@ -29,20 +30,9 @@ const ACTIONS = {
   SET_CURRENT_EMPLOYEE: 'SET_CURRENT_EMPLOYEE'
 };
 
-// État initial
+// État initial avec données d'exemple
 const initialState = {
-  products: [
-    { id: 1, name: 'Pain baguette', price: 1.10, category: 'Alimentation', ean: '1234567890123' },
-    { id: 2, name: 'Lait 1L', price: 1.20, category: 'Alimentation', ean: '1234567890124' },
-    { id: 3, name: 'Coca-Cola 33cl', price: 1.50, category: 'Boissons', ean: '1234567890125' },
-    { id: 4, name: 'Eau minérale 1.5L', price: 0.80, category: 'Boissons', ean: '1234567890126' },
-    { id: 5, name: 'Shampoing', price: 3.50, category: 'Hygiène', ean: '1234567890127' },
-    { id: 6, name: 'Dentifrice', price: 2.80, category: 'Hygiène', ean: '1234567890128' },
-    { id: 7, name: 'Lessive 2L', price: 4.20, category: 'Entretien', ean: '1234567890129' },
-    { id: 8, name: 'Papier toilette', price: 1.90, category: 'Entretien', ean: '1234567890130' },
-    { id: 9, name: 'Pommes 1kg', price: 2.50, category: 'Alimentation', ean: '1234567890131' },
-    { id: 10, name: 'Bananes 1kg', price: 1.80, category: 'Alimentation', ean: '1234567890132' }
-  ],
+  products: sampleProducts,
   ventes: [],
   retours: [],
   cart: [],
@@ -53,13 +43,7 @@ const initialState = {
     { id: 2, name: 'Employé 2', code: '5678' }
   ],
   currentEmployee: null,
-  categories: [
-    'Alimentation',
-    'Boissons',
-    'Hygiène',
-    'Entretien',
-    'Autres'
-  ]
+  categories: sampleCategories
 };
 
 // Reducer
@@ -242,7 +226,13 @@ export function DataProvider({ children }) {
         if (parsedData.employees) dispatch({ type: ACTIONS.SET_EMPLOYEES, payload: parsedData.employees });
       } catch (error) {
         console.error('Erreur lors du chargement des données:', error);
+        // En cas d'erreur, utiliser les données d'exemple
+        dispatch({ type: ACTIONS.SET_PRODUCTS, payload: sampleProducts });
       }
+    } else {
+      // Si aucune donnée sauvegardée, utiliser les données d'exemple
+      console.log('Aucune donnée sauvegardée trouvée, utilisation des données d\'exemple');
+      dispatch({ type: ACTIONS.SET_PRODUCTS, payload: sampleProducts });
     }
   }, []);
 
