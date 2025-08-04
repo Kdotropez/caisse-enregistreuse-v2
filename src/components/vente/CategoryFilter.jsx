@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CategoryFilter.css';
 
 const CategoryFilter = ({ 
@@ -6,23 +6,38 @@ const CategoryFilter = ({
   selectedCategory, 
   setSelectedCategory 
 }) => {
+  const [showCategories, setShowCategories] = useState(true);
+
   return (
     <div className="category-filter">
-      <button
-        className={`category-btn ${selectedCategory === 'Toutes' ? 'active' : ''}`}
-        onClick={() => setSelectedCategory('Toutes')}
-      >
-        Toutes
-      </button>
-      {categories.map(category => (
+      <div className="category-header">
         <button
-          key={category}
-          className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
-          onClick={() => setSelectedCategory(category)}
+          className="toggle-categories-btn"
+          onClick={() => setShowCategories(!showCategories)}
         >
-          {category}
+          {showCategories ? 'Masquer' : 'Afficher'} les catégories
         </button>
-      ))}
+      </div>
+      
+      {showCategories && (
+        <div className="category-buttons">
+          <button
+            className={`category-btn ${selectedCategory === 'Toutes' ? 'active' : ''}`}
+            onClick={() => setSelectedCategory('Toutes')}
+          >
+            Toutes
+          </button>
+          {categories.map(category => (
+            <button
+              key={category}
+              className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
