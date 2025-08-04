@@ -1,0 +1,253 @@
+.ticket-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.ticket-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 2px solid #e5e7eb;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.ticket-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.ticket-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.print-btn,
+.close-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.print-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.print-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.close-btn {
+  background: rgba(239, 68, 68, 0.8);
+  color: white;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background: rgba(239, 68, 68, 1);
+  transform: scale(1.1);
+}
+
+.ticket {
+  padding: 1.5rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.header {
+  text-align: center;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.header h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.header p {
+  margin: 0.25rem 0;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.items {
+  margin-bottom: 1rem;
+}
+
+.item {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dotted #e5e7eb;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.25rem;
+}
+
+.item-name {
+  font-weight: 600;
+  color: #1f2937;
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+.item-price {
+  color: #6b7280;
+  font-size: 0.85rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.item-details {
+  font-size: 0.8rem;
+  color: #8b5cf6;
+  font-weight: 500;
+  margin: 0.25rem 0;
+  padding: 0.2rem 0.5rem;
+  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.item-total {
+  text-align: right;
+  font-weight: 600;
+  color: #667eea;
+  font-size: 0.9rem;
+}
+
+.totals {
+  border-top: 2px solid #e5e7eb;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.subtotal,
+.discount,
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.subtotal {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.discount {
+  color: #10b981;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.total {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1f2937;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.payment {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dotted #e5e7eb;
+}
+
+.payment p {
+  margin: 0.25rem 0;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px dotted #e5e7eb;
+}
+
+.footer p {
+  margin: 0.25rem 0;
+  color: #9ca3af;
+  font-size: 0.8rem;
+}
+
+.footer p:first-child {
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .ticket-content {
+    width: 95%;
+    max-width: none;
+  }
+  
+  .ticket {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .ticket-header {
+    padding: 1rem;
+  }
+  
+  .ticket-header h2 {
+    font-size: 1.1rem;
+  }
+  
+  .print-btn,
+  .close-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+} 
