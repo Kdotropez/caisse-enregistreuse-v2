@@ -85,6 +85,12 @@ function App() {
             {renderCurrentView()}
           </main>
 
+          <footer className="app-footer">
+            <div className="copyright">
+              © 2024 Caisse Enregistreuse V2 - Développé par Nicolas Lefèvre
+            </div>
+          </footer>
+
           {/* Modals */}
           {showUSBManager && (
             <USBManager 
